@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom"
 import Palette from '../Color';
 import { CustomButton } from '.';
 import { PlantContext } from '../context/PlantContext';
-
+import { customizedString } from './utils/helpers';
 
 const Container = styled.div`
   display: flex;
@@ -56,7 +56,7 @@ const Bottom = styled.div`
 const ProductCard = ({ plant }) => {
   let history = useHistory();
   const { order, setOrder } = React.useContext(PlantContext);
-	const {total, setTotal} = React.useContext(PlantContext);
+  const { total, setTotal } = React.useContext(PlantContext);
 
   const handleClick = () => {
     history.push('/detail/' + plant.id + '/');
@@ -65,19 +65,19 @@ const ProductCard = ({ plant }) => {
   const handleAdd = (item) => {
     const exist = order.find(x => x.plant.id === item.id);
     if (exist) {
-      setOrder(order.map(x => x.plant.id === item.id ? { ...exist , qty: exist.qty + 1, total: exist.total + exist.plant.price } : x));
-      setOrder(state=>{
-        setTotal(state.reduce((acc,current) => acc + current.total, 0));
-        setTotal(state =>{
+      setOrder(order.map(x => x.plant.id === item.id ? { ...exist, qty: exist.qty + 1, total: exist.total + exist.plant.price } : x));
+      setOrder(state => {
+        setTotal(state.reduce((acc, current) => acc + current.total, 0));
+        setTotal(state => {
           return state;
         })
         return state;
       })
     } else {
-      setOrder([...order, { plant: item, qty: 1, total: item.price}])
-      setOrder(state=>{
-        setTotal(state.reduce((acc,current) => acc + current.total, 0));
-        setTotal(state =>{
+      setOrder([...order, { plant: item, qty: 1, total: item.price }])
+      setOrder(state => {
+        setTotal(state.reduce((acc, current) => acc + current.total, 0));
+        setTotal(state => {
           return state;
         })
         return state;
@@ -89,7 +89,7 @@ const ProductCard = ({ plant }) => {
     <Container onClick={handleClick}>
       <Image src={plant.image} alt='plant' />
       <Title>
-        <Name>{plant.name}</Name>
+        <Name>{customizedString(plant.name)}</Name>
         <Price>{plant.price.toFixed(2)} €</Price>
       </Title>
       <Bottom>

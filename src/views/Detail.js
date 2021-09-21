@@ -6,6 +6,7 @@ import Palette from '../Color'
 import { CustomButton } from '../components'
 import PlantAPI from '../services/PlantAPI'
 import { PlantContext } from '../context/PlantContext'
+import { customizedString } from '../components/utils/helpers'
 
 const Container = styled.div`
 	padding: 1rem;
@@ -84,7 +85,7 @@ const Detail = () => {
 			<Container>
 				<Img src={plant.image} alt={plant.name} />
 				<Info>
-					<Name>{plant.name} - {plant.price.toFixed(2)}€ </Name>
+					<Name>{customizedString(plant.name)} - {plant.price.toFixed(2)}€ </Name>
 					<Des>{plant.description}</Des>
 					<Quan>{plant.quantity > 5 ? <p>In stock</p> : <p>Only {plant.quantity} left</p>}</Quan>
 					<CustomButton title="Add to cart" disabled={plant.quantity === 0} onClick={() => handleAdd(plant)} />

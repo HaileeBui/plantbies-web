@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { FaShoppingBag, FaBars } from "react-icons/fa";
 import { NavLink as Link } from "react-router-dom";
 
-import Palette from '../../Color';
 import { PlantContext } from '../../context/PlantContext';
 import './navbar.css'
 
@@ -12,6 +11,7 @@ const NavLink = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;
+	margin-top: .3rem;
   padding: 0 1rem;
   height: 100%;
   cursor: pointer;

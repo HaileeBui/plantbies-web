@@ -14,9 +14,9 @@ const Container = styled.div`
   padding: .7rem;
   width: 15rem;
   height: 20rem;
-  border: 1px solid ${ Palette.darkGreen };
+  border: 1px solid ${ Palette.lightGrey };
   borer-radius: 2px;
-  box-shadow: 1px 2px #888888;
+  box-shadow: 1px 1.5px 1px  ${ Palette.lightGrey };
   &:hover {
     transform: scale(1.05); 
   }

@@ -106,6 +106,7 @@ const ShoppingCart = () => {
 			if (order[i].qty <= plant.quantity) {
 				const data = { quantity: plant.quantity - order[i].qty };
 				modifyPlant(data, order[i].plant.id);
+				setTotal(0);
 			} else {
 				alert(`Plant ${ order[i].plant.name } is out of stock. Only ${ plant.quantity } left.`);
 				return true;
